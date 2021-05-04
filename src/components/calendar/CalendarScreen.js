@@ -10,6 +10,8 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
 import { uiOpenModal } from '../../actions/ui';
+import { eventSetActive } from '../../actions/events';
+import FabAddNew from '../ui/FabAddNew';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -35,6 +37,7 @@ export default function CalendarScreen() {
         dispatch( uiOpenModal() );
     }
     const onSelect = (e) => {
+        dispatch( eventSetActive(e) );
         dispatch( uiOpenModal() );
     }
     const onViewEvent = (e) => {
@@ -63,6 +66,9 @@ export default function CalendarScreen() {
                 onView={onViewEvent}
                 view={currentView}
                 components={components}
+            />
+            <FabAddNew
+                handleOpenModal={handleOpenModal}
             />
             <CalendarModal
             />
