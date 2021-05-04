@@ -3,11 +3,13 @@ import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useDispatch } from 'react-redux';
 
 import { messages } from '../../helpers/calendarMessages';
 import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
+import { uiOpenModal } from '../../actions/ui';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -17,7 +19,6 @@ const events = [{
     title: "Primer Evento",
     start: moment().toDate(),
     end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#fafafa',
     notes: 'Notas primer evento',
     user: {
         _id: 1,
@@ -26,16 +27,15 @@ const events = [{
 }];
 
 export default function CalendarScreen() {
+    const dispatch = useDispatch();
 
     const [currentView, setCurrentView] = useState(localStorage.getItem('currentView') || 'week');
-    const [isOpen, setIsOpen] = useState(true);
 
-    const onDoubleClick = (e) => {
-        console.log(e)
+    const handleOpenModal = (e) => {
+        dispatch( uiOpenModal() );
     }
     const onSelect = (e) => {
-        console.log(e)
-        setIsOpen(true);
+        dispatch( uiOpenModal() );
     }
     const onViewEvent = (e) => {
         setCurrentView(e);
@@ -58,15 +58,13 @@ export default function CalendarScreen() {
                 endAccessor="end"
                 messages={messages}
                 eventPropGetter={eventStyle}
-                onDoubleClickEvent={onDoubleClick}
+                onDoubleClickEvent={handleOpenModal}
                 onSelectEvent={onSelect}
                 onView={onViewEvent}
                 view={currentView}
                 components={components}
             />
             <CalendarModal
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
             />
         </div>
     )

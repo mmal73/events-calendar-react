@@ -3,7 +3,10 @@ import Modal from 'react-modal';
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './CalendarModal.css';
+import { uiCloseModal } from '../../actions/ui';
 
 // Modal
 const customStyles = {
@@ -21,7 +24,11 @@ Modal.setAppElement('#root');
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const nowSum1 =  now.clone().add(1, 'hours');
 
-export default function CalendarModal({ isOpen, setIsOpen }) {
+export default function CalendarModal() {
+    const { modalOpen } = useSelector(state => state.ui);
+    
+    const dispatch = useDispatch();
+
     // Form 
     const [formValues, setFormValues] = useState({
         title: '',
@@ -57,8 +64,7 @@ export default function CalendarModal({ isOpen, setIsOpen }) {
         });
     }
     const closeModal = (e) => {
-        setIsOpen(false);
-        console.log('close')
+        dispatch( uiCloseModal() );
     }
     const errorSwal = (error) => {
         return Swal.fire({
@@ -88,7 +94,7 @@ export default function CalendarModal({ isOpen, setIsOpen }) {
 
     return (
         <Modal
-            isOpen={isOpen}
+            isOpen={modalOpen}
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal"
