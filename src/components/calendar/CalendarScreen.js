@@ -3,7 +3,7 @@ import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { messages } from '../../helpers/calendarMessages';
 import CalendarEvent from './CalendarEvent';
@@ -17,18 +17,9 @@ import FabAddNew from '../ui/FabAddNew';
 // to the correct localizer.
 moment.locale('es');
 const localizer = momentLocalizer(moment)
-const events = [{
-    title: "Primer Evento",
-    start: moment().toDate(),
-    end: moment().add(2, 'hours').toDate(),
-    notes: 'Notas primer evento',
-    user: {
-        _id: 1,
-        name: 'Luis'
-    }
-}];
 
 export default function CalendarScreen() {
+    const {events} = useSelector(state => state.calendar)
     const dispatch = useDispatch();
 
     const [currentView, setCurrentView] = useState(localStorage.getItem('currentView') || 'week');
