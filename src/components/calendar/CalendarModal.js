@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './CalendarModal.css';
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActive } from '../../actions/events';
+import { eventAddNew, eventClearActive, eventUpdated } from '../../actions/events';
 
 // Modal
 const customStyles = {
@@ -96,14 +96,18 @@ export default function CalendarModal() {
         if( titleInvalid ){
             return errorSwal('El titulo es obligatorio');
         }
-        dispatch( eventAddNew({
-            ...formValues,
-            id: new Date().getTime(),
-            user:{
-                _id: '123',
-                name: 'Luis'
-            }
-        }) );
+        if( eventActive ){
+            dispatch( eventUpdated(formValues) );
+        }else{
+            dispatch( eventAddNew({
+                ...formValues,
+                id: new Date().getTime(),
+                user:{
+                    _id: '123',
+                    name: 'Luis'
+                }
+            }));
+        }
         closeModal();
     }
 

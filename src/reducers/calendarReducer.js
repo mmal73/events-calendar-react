@@ -37,6 +37,13 @@ export const calendarReducer = (state = initialState, action) => {
                     action.payload
                 ]
             }
+        case types.eventUpdated:
+            return {
+                ...state,
+                events: state.events.map( e => (
+                    e.id === action.payload.id ? action.payload : e
+                ))
+            }
         default:
             return state;
     }
