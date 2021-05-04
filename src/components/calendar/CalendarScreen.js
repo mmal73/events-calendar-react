@@ -6,6 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import { messages } from '../../helpers/calendarMessages';
 import CalendarEvent from './CalendarEvent';
+import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -27,13 +28,14 @@ const events = [{
 export default function CalendarScreen() {
 
     const [currentView, setCurrentView] = useState(localStorage.getItem('currentView') || 'week');
+    const [isOpen, setIsOpen] = useState(true);
 
     const onDoubleClick = (e) => {
         console.log(e)
     }
     const onSelect = (e) => {
         console.log(e)
-        
+        setIsOpen(true);
     }
     const onViewEvent = (e) => {
         setCurrentView(e);
@@ -61,6 +63,10 @@ export default function CalendarScreen() {
                 onView={onViewEvent}
                 view={currentView}
                 components={components}
+            />
+            <CalendarModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
             />
         </div>
     )
