@@ -6,4 +6,5 @@ export const types = {
     eventClearActive: '[event] Clear active',
     eventUpdated: '[event] Updated',
     eventDeleted: '[event] Deleted',
+    calendarDateSelected: '[calendar] Date selected',
 }

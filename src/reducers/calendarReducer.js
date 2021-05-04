@@ -14,7 +14,8 @@ const initialState = {
             }
         }
     ],
-    eventActive: null
+    eventActive: null,
+    calendarDateSelected: null
 };
 
 export const calendarReducer = (state = initialState, action) => {
@@ -22,6 +23,7 @@ export const calendarReducer = (state = initialState, action) => {
         case types.eventSetActive:
             return {
                 ...state,
+                calendarDateSelected: null,
                 eventActive: action.payload
             }
         case types.eventClearActive:
@@ -51,6 +53,11 @@ export const calendarReducer = (state = initialState, action) => {
                     e.id !== state.eventActive.id
                 )),
                 eventActive: null
+            }
+        case types.calendarDateSelected:
+            return {
+                ...state,
+                calendarDateSelected: action.payload
             }
         default:
             return state;

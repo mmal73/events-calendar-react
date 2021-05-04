@@ -10,7 +10,7 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
 import { uiOpenModal } from '../../actions/ui';
-import { eventSetActive, eventDeleted, eventClearActive } from '../../actions/events';
+import { eventSetActive, eventDeleted, eventClearActive, calendarDateSelected } from '../../actions/events';
 import FabAddNew from '../ui/FabAddNew';
 import Navbar from '../ui/Navbar';
 
@@ -32,7 +32,8 @@ export default function CalendarScreen() {
         dispatch( eventDeleted() );
     }
     const handleSelectSlot = ({start}) => {
-        dispatch( eventClearActive() );
+        dispatch( calendarDateSelected(start) );
+        eventActive && dispatch( eventClearActive() );
     }
     const onSelect = (e) => {
         dispatch( eventSetActive(e) );

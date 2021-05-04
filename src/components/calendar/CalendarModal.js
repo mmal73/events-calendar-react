@@ -34,7 +34,7 @@ const initialForm = {
 
 export default function CalendarModal() {
     const { modalOpen } = useSelector(state => state.ui);
-    const { eventActive } = useSelector(state => state.calendar);
+    const { eventActive, calendarDateSelected } = useSelector(state => state.calendar);
     const dispatch = useDispatch();
 
     // Form 
@@ -46,16 +46,23 @@ export default function CalendarModal() {
     const [titleValid, setTitleValid] = useState(false);
 
     useEffect(() => {
+        if(calendarDateSelected){
+            setFormValues({
+                ...initialForm,
+                start: calendarDateSelected
+            });
+        }
+    }, [calendarDateSelected]);
+    useEffect(() => {
         eventActive ? setFormValues(eventActive) : setFormValues(initialForm);
     }, [eventActive]);
-
     const handleInputChange = ({target}) => {
         setFormValues({
             ...formValues,
             [target.name]: target.value
         });
+        titleInvalid ? setTitleValid(false) : setTitleValid(true);
     }
-
     // Datepicker
     const handleStartDate = (e) => {
         setFormValues({
@@ -81,10 +88,6 @@ export default function CalendarModal() {
             text: error
         });
     }
-    useEffect(() => {
-        titleInvalid ? setTitleValid(false) : setTitleValid(true);
-    }, [title, titleInvalid]);
-
     const eventSubmit = (e) => {
         e.preventDefault();
         

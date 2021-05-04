@@ -15,6 +15,10 @@ export const eventUpdated = (event) => ({
     type: types.eventUpdated,
     payload: event
 })
-export const eventDeleted = (event) => ({
+export const eventDeleted = () => ({
     type: types.eventDeleted
+})
+export const calendarDateSelected = (event) => ({
+    type: types.calendarDateSelected,
+    payload: event
 })
