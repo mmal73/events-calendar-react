@@ -27,7 +27,7 @@ const nowSum1 =  now.clone().add(1, 'hours');
 
 const initialForm = {
     title: '',
-    notes: 'Notes',
+    notes: '',
     start: now.toDate(),
     end: nowSum1.toDate(),
 };
@@ -46,7 +46,7 @@ export default function CalendarModal() {
     const [titleValid, setTitleValid] = useState(false);
 
     useEffect(() => {
-        eventActive && setFormValues(eventActive);
+        eventActive ? setFormValues(eventActive) : setFormValues(initialForm);
     }, [eventActive]);
 
     const handleInputChange = ({target}) => {
@@ -120,7 +120,7 @@ export default function CalendarModal() {
             overlayClassName="modal-fondo"
             closeTimeoutMS={200}
         >
-            <h1>Nuevo Evento</h1>
+            <h1>{ eventActive ? 'Editar Evento' : 'Nuevo Evento'}</h1>
             <form
                 className="container"
                 onSubmit={eventSubmit}

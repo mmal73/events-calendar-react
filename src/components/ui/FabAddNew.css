@@ -1,7 +1,16 @@
-.fab{
+.fab-add{
     border-radius: 100%;
     bottom: 3rem;
     right: 2rem;
-    font-size: 30px;
+    font-size: 1.6rem;
     position: fixed;
+    z-index: 10;
+}
+.fab-delete{
+    border-radius: 100%;
+    bottom: 8rem;
+    right: 2rem;
+    font-size: 1.6rem;
+    position: fixed;
+    z-index: 10;
 }

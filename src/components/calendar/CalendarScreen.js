@@ -10,7 +10,7 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
 import { uiOpenModal } from '../../actions/ui';
-import { eventSetActive } from '../../actions/events';
+import { eventSetActive, eventDeleted, eventClearActive } from '../../actions/events';
 import FabAddNew from '../ui/FabAddNew';
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -19,7 +19,7 @@ moment.locale('es');
 const localizer = momentLocalizer(moment)
 
 export default function CalendarScreen() {
-    const {events} = useSelector(state => state.calendar)
+    const { events, eventActive } = useSelector(state => state.calendar)
     const dispatch = useDispatch();
 
     const [currentView, setCurrentView] = useState(localStorage.getItem('currentView') || 'week');
@@ -27,9 +27,14 @@ export default function CalendarScreen() {
     const handleOpenModal = (e) => {
         dispatch( uiOpenModal() );
     }
+    const handleDeleteEvent = (e) => {
+        dispatch( eventDeleted() );
+    }
+    const handleSelectSlot = ({start}) => {
+        dispatch( eventClearActive() );
+    }
     const onSelect = (e) => {
         dispatch( eventSetActive(e) );
-        dispatch( uiOpenModal() );
     }
     const onViewEvent = (e) => {
         setCurrentView(e);
@@ -57,10 +62,22 @@ export default function CalendarScreen() {
                 onView={onViewEvent}
                 view={currentView}
                 components={components}
+                onSelectSlot={handleSelectSlot}
+                selectable={true}
             />
             <FabAddNew
-                handleOpenModal={handleOpenModal}
+                className='btn-primary fab-add'
+                text={<i className="fas fa-plus"></i>}
+                handleClick={handleOpenModal}
             />
+            {
+                eventActive && 
+                <FabAddNew
+                    className='btn-danger fab-delete'
+                    text={<i className="fas fa-trash"></i>}
+                    handleClick={handleDeleteEvent}
+                />
+            }
             <CalendarModal
             />
         </div>

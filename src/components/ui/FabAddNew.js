@@ -1,13 +1,13 @@
 import React from 'react';
 import './FabAddNew.css';
 
-export default function FabAddNew({handleOpenModal}) {
+export default function FabAddNew({ className, handleClick, text}) {
     return (
         <button
-            className="btn btn-primary fab p-3"
-            onClick={handleOpenModal}
+            className={`btn ${className}`}
+            onClick={handleClick}
         >
-            <i className="fas fa-plus"></i>
+            {text}
         </button>
     )
 }
