@@ -12,6 +12,7 @@ import './CalendarScreen.css';
 import { uiOpenModal } from '../../actions/ui';
 import { eventSetActive, eventDeleted, eventClearActive } from '../../actions/events';
 import FabAddNew from '../ui/FabAddNew';
+import Navbar from '../ui/Navbar';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -50,6 +51,7 @@ export default function CalendarScreen() {
     }
     return (
         <div className="main-calendar">
+            <Navbar/>
             <BigCalendar
                 localizer={localizer}
                 events={events}
