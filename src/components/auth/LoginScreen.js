@@ -37,6 +37,7 @@ export default function LoginScreen() {
                                     name="lEmail"
                                     value={lEmail}
                                     onChange={handleLoginInputChange}
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group">
@@ -47,6 +48,7 @@ export default function LoginScreen() {
                                     name="lPassword"
                                     value={lPassword}
                                     onChange={handleLoginInputChange}
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group d-flex justify-content-center">
@@ -54,6 +56,7 @@ export default function LoginScreen() {
                                     type="submit"
                                     className="btn-submit"
                                     value="Login"
+                                    autoComplete="off"
                                 />
                             </div>
                         </form>
@@ -66,6 +69,7 @@ export default function LoginScreen() {
                                     type="text"
                                     className="form-control input-form"
                                     placeholder="Nombre"
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group">
@@ -73,6 +77,7 @@ export default function LoginScreen() {
                                     type="email"
                                     className="form-control input-form"
                                     placeholder="Correo"
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group">
@@ -80,6 +85,7 @@ export default function LoginScreen() {
                                     type="password"
                                     className="form-control input-form"
                                     placeholder="Contraseña"
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group">
@@ -87,13 +93,16 @@ export default function LoginScreen() {
                                     type="password"
                                     className="form-control input-form"
                                     placeholder="Repita la contraseña"
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-group d-flex justify-content-center">
                                 <input
                                     type="submit"
                                     className="btn-submit"
-                                    value="Crear cuenta" />
+                                    value="Crear cuenta"
+                                    autoComplete="off"
+                                />
                             </div>
                         </form>
                     </div>
