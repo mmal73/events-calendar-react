@@ -72,8 +72,7 @@ const startChecking = () => {
             saveToken(token);
             dispatch( login({ _id, name }) )
         }else{
-            dispatch( checkingFinish );
-            console.log('localStorage');
+            dispatch( checkingFinish() );
         }
     }
 }
