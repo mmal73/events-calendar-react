@@ -77,8 +77,21 @@ const startChecking = () => {
     }
 }
 
+const logout = () => ({
+    type: types.authLogout
+})
+const startLogout = () => {
+    return ( dispatch ) => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('token-init-date');
+        console.log(logout())
+        dispatch( logout() );
+    }
+}
+
 export{
     authLoginStart,
     startRegister,
-    startChecking
+    startChecking,
+    startLogout
 }

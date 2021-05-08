@@ -1,6 +1,7 @@
 export const types = {
     authLogin: '[auth]: Login',
     authFinishCheking: '[auth]: Finish checking',
+    authLogout: '[auth]: Logout',
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
     eventAddNew: '[event] Add new',
