@@ -1,8 +1,10 @@
 import React from 'react';
 import './login.css';
-import { useForm } from '../../hooks/useForm';
+import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
+import { useForm } from '../../hooks/useForm';
 import { authLoginStart } from '../../actions/auth';
+import { startRegister } from '../../actions/auth';
 
 export default function LoginScreen() {
     
@@ -13,10 +15,30 @@ export default function LoginScreen() {
         lPassword: '12345678'
     });
     const { lEmail, lPassword } = formLoginValues;
+    
+    const [ formRegisterValues, handleRegisterInputChange ] = useForm({
+        rName: 'luisito new',
+        rEmail: 'luisitonew@mail.com',
+        rPassword1: '',
+        rPassword2: ''
+    });
+    const { rName, rEmail, rPassword1, rPassword2 } = formRegisterValues;
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         dispatch( authLoginStart( lEmail, lPassword ) );
+    }
+
+    const handleRegisterSubmit = (e) => {
+        e.preventDefault();
+        if( rPassword1 !== rPassword2 ){
+            return Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Las contranseñas no son iguales"
+            });
+        }
+        dispatch( startRegister( rName, rEmail, rPassword1 ) );
     }
 
     return (
@@ -63,12 +85,17 @@ export default function LoginScreen() {
                     </div>
                     <div className="col-md-6 login-form-2 mt-2 p-4">
                         <h3 className="text-white text-center">Registro</h3>
-                        <form>
+                        <form
+                            onSubmit={ handleRegisterSubmit }
+                        >
                             <div className="form-group">
                                 <input
                                     type="text"
                                     className="form-control input-form"
                                     placeholder="Nombre"
+                                    name="rName"
+                                    value={rName}
+                                    onChange={handleRegisterInputChange}
                                     autoComplete="off"
                                 />
                             </div>
@@ -77,6 +104,9 @@ export default function LoginScreen() {
                                     type="email"
                                     className="form-control input-form"
                                     placeholder="Correo"
+                                    name="rEmail"
+                                    value={rEmail}
+                                    onChange={handleRegisterInputChange}
                                     autoComplete="off"
                                 />
                             </div>
@@ -85,6 +115,9 @@ export default function LoginScreen() {
                                     type="password"
                                     className="form-control input-form"
                                     placeholder="Contraseña"
+                                    name="rPassword1"
+                                    value={rPassword1}
+                                    onChange={handleRegisterInputChange}
                                     autoComplete="off"
                                 />
                             </div>
@@ -93,6 +126,9 @@ export default function LoginScreen() {
                                     type="password"
                                     className="form-control input-form"
                                     placeholder="Repita la contraseña"
+                                    name="rPassword2"
+                                    value={rPassword2}
+                                    onChange={handleRegisterInputChange}
                                     autoComplete="off"
                                 />
                             </div>
