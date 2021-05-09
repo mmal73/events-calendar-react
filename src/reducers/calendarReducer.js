@@ -10,7 +10,7 @@ const initialState = {
             notes: 'Notas primer evento',
             user: {
                 _id: 1,
-                name: 'Luis'
+                name: 'Author fake'
             }
         }
     ],

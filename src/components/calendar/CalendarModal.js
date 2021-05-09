@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './CalendarModal.css';
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActive, eventUpdated } from '../../actions/events';
+import { eventStartAddNew, eventClearActive, eventUpdated } from '../../actions/events';
 
 // Modal
 const customStyles = {
@@ -102,14 +102,7 @@ export default function CalendarModal() {
         if( eventActive ){
             dispatch( eventUpdated(formValues) );
         }else{
-            dispatch( eventAddNew({
-                ...formValues,
-                id: new Date().getTime(),
-                user:{
-                    _id: '123',
-                    name: 'Luis'
-                }
-            }));
+            dispatch( eventStartAddNew( formValues ));
         }
         closeModal();
     }

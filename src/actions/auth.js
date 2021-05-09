@@ -93,5 +93,6 @@ export{
     authLoginStart,
     startRegister,
     startChecking,
-    startLogout
+    startLogout,
+    showErrors
 }
