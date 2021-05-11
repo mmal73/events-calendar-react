@@ -52,6 +52,22 @@ export const startEventUpdated = ( event ) => {
 export const eventDeleted = () => ({
     type: types.eventDeleted
 });
+export const eventStartDelete = () => {
+    return async( dispatch, getState ) => {
+        const { id } = getState().calendar.eventActive;
+        try {
+            const resp = await fetchWithToken(`events/${id}`, {}, 'DELETE');
+            const data = await resp.json();
+            if( data.status ){
+                dispatch( eventDeleted() );
+            }else{
+                showErrors( data.message, data.errors );
+            }
+        } catch ( error ) {
+            console.log(error)
+        }
+    }
+};
 export const calendarDateSelected = (event) => ({
     type: types.calendarDateSelected,
     payload: event
