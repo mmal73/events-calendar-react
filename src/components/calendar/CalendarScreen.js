@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/es-mx';
@@ -10,7 +10,7 @@ import CalendarEvent from './CalendarEvent';
 import CalendarModal from './CalendarModal';
 import './CalendarScreen.css';
 import { uiOpenModal } from '../../actions/ui';
-import { eventSetActive, eventDeleted, eventClearActive, calendarDateSelected } from '../../actions/events';
+import { eventSetActive, eventDeleted, eventClearActive, calendarDateSelected, eventStartLoaded } from '../../actions/events';
 import FabAddNew from '../ui/FabAddNew';
 import Navbar from '../ui/Navbar';
 
@@ -21,9 +21,14 @@ const localizer = momentLocalizer(moment)
 
 export default function CalendarScreen() {
     const { events, eventActive } = useSelector(state => state.calendar)
+    const { _id } = useSelector(state => state.auth)
     const dispatch = useDispatch();
 
     const [currentView, setCurrentView] = useState(localStorage.getItem('currentView') || 'week');
+
+    useEffect(() => {
+        dispatch( eventStartLoaded() );
+    }, [dispatch]);
 
     const handleOpenModal = (e) => {
         dispatch( uiOpenModal() );
@@ -44,7 +49,7 @@ export default function CalendarScreen() {
     }
     const eventStyle = ( event,start,end,isSelected ) => {
         return {
-            className: 'event-calendar'
+            className: `event-calendar ${ event.user._id === _id ? 'event-own' : 'event-not-own'}`
         }
     };
     const components = {

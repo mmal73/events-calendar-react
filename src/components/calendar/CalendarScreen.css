@@ -4,9 +4,20 @@
     height: 100vh;
 }
 .event-calendar{
-    background-color: var(--primary);
     border-radius: 0px;
     opacity: .8;
     display: block;
     color: #ffffff;
+}
+
+.event-own{
+    background-color: var(--primary);
+}
+.event-not-own{
+    background-color: var(--light);
+    color: #000;
+}
+
+.rbc-selected {
+    color: #fff;
 }

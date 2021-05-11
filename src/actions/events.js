@@ -1,6 +1,7 @@
 import { types } from "../types/types"
 import {showErrors} from './auth';
 import { fetchWithToken } from "../helpers/myFetch";
+import { prepareEvents } from "../helpers/prepareEvents";
 export const eventSetActive = (event) => ({
     type: types.eventSetActive,
     payload: event
@@ -32,11 +33,31 @@ export const eventStartAddNew = ( event ) => {
 export const eventUpdated = (event) => ({
     type: types.eventUpdated,
     payload: event
-})
+});
 export const eventDeleted = () => ({
     type: types.eventDeleted
-})
+});
 export const calendarDateSelected = (event) => ({
     type: types.calendarDateSelected,
     payload: event
+});
+const eventLoaded = ( events ) => ({
+    type: types.eventLoaded,
+    payload: events
 })
+export const eventStartLoaded = () => {
+    return async( dispatch ) => {
+        try {
+            const resp = await fetchWithToken('events');
+            const data = await resp.json();
+            if( data.status ){
+                const preparedEvents = prepareEvents( data.events );
+                dispatch( eventLoaded( preparedEvents ) );
+            }else{
+                showErrors( data.message, data.errors );
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
