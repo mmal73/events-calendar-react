@@ -92,3 +92,6 @@ export const eventStartLoaded = () => {
         }
     }
 }
+export const eventClear = () => ({
+    type: types.eventClear
+})

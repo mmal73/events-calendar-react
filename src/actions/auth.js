@@ -1,6 +1,7 @@
 import { fetchWithoutToken, fetchWithToken } from "../helpers/myFetch";
 import { types } from "../types/types";
 import Swal from "sweetalert2";
+import { eventClear } from "./events";
 
 const saveToken = ( token ) => {
     localStorage.setItem( 'token', token );
@@ -84,7 +85,7 @@ const startLogout = () => {
     return ( dispatch ) => {
         localStorage.removeItem('token');
         localStorage.removeItem('token-init-date');
-        console.log(logout())
+        dispatch( eventClear() );
         dispatch( logout() );
     }
 }
