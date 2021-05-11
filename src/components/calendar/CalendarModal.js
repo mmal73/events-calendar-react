@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './CalendarModal.css';
 import { uiCloseModal } from '../../actions/ui';
-import { eventStartAddNew, eventClearActive, eventUpdated } from '../../actions/events';
+import { eventStartAddNew, eventClearActive, startEventUpdated } from '../../actions/events';
 
 // Modal
 const customStyles = {
@@ -100,7 +100,7 @@ export default function CalendarModal() {
             return errorSwal('El titulo es obligatorio');
         }
         if( eventActive ){
-            dispatch( eventUpdated(formValues) );
+            dispatch( startEventUpdated(formValues) );
         }else{
             dispatch( eventStartAddNew( formValues ));
         }

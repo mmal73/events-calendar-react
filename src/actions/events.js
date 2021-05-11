@@ -30,10 +30,25 @@ export const eventStartAddNew = ( event ) => {
         }
     }
 }
-export const eventUpdated = (event) => ({
+const eventUpdated = (event) => ({
     type: types.eventUpdated,
     payload: event
 });
+export const startEventUpdated = ( event ) => {
+    return async( dispatch ) => {
+        try {
+            const resp = await fetchWithToken(`events/${event.id}`, event, 'PUT');
+            const data = await resp.json();
+            if( data.status ){
+                dispatch( eventUpdated( event ) );
+            }else{
+                showErrors( data.message, data.errors );
+            }
+        } catch ( error ) {
+            console.log(error)
+        }
+    }
+};
 export const eventDeleted = () => ({
     type: types.eventDeleted
 });
