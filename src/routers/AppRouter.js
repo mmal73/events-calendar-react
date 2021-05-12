@@ -26,14 +26,12 @@ export default function AppRouter() {
     if ( checking ) {
         return ( <h3>Checking...</h3> )
     }
-    console.log(process.env);
-    console.log(process.env.PUBLIC_URL);
     return (
         <Router basename="/events-calendar-react">
             <div>
                 <Switch>
-                    <PublicRoute exact path="/login" component={LoginScreen} isAuthenticated={authenticated} />
-                    <PrivateRoute exact path="/" component={CalendarScreen} isAuthenticated={authenticated} />
+                    <PublicRoute exact path={`${process.env.PUBLIC_URL}/login`} component={LoginScreen} isAuthenticated={authenticated} />
+                    <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={CalendarScreen} isAuthenticated={authenticated} />
                     <Redirect to="/"/>
                 </Switch>
             </div>
