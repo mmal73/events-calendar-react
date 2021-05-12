@@ -30,8 +30,8 @@ export default function AppRouter() {
         <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <Switch>
-                    <PublicRoute exact path={`${process.env.PUBLIC_URL}/login`} component={LoginScreen} isAuthenticated={authenticated} />
-                    <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={CalendarScreen} isAuthenticated={authenticated} />
+                    <PublicRoute exact path={`/login`} component={LoginScreen} isAuthenticated={authenticated} />
+                    <PrivateRoute exact path={`/`} component={CalendarScreen} isAuthenticated={authenticated} />
                     <Redirect to="/"/>
                 </Switch>
             </div>
