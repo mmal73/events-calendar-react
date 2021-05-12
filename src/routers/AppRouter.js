@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
-    Redirect
+    Redirect,
+    HashRouter
 } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,19 +23,18 @@ export default function AppRouter() {
         dispatch( startChecking() );
     }, [dispatch])
 
-    console.log(process.env.PUBLIC_URL);
     if ( checking ) {
         return ( <h3>Checking...</h3> )
     }
     return (
-        <Router>
+        <HashRouter>
             <div>
                 <Switch>
-                    <PublicRoute exact path={`${process.env.PUBLIC_URL}/login`} component={LoginScreen} isAuthenticated={authenticated} />
-                    <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={CalendarScreen} isAuthenticated={authenticated} />
-                    <Redirect to={`${process.env.PUBLIC_URL}/`}/>
+                    <PublicRoute exact path='/login' component={LoginScreen} isAuthenticated={authenticated} />
+                    <PrivateRoute exact path='/' component={CalendarScreen} isAuthenticated={authenticated} />
+                    <Redirect to='/'/>
                 </Switch>
             </div>
-        </Router>
+        </HashRouter>
     )
 }

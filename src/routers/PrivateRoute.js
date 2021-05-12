@@ -17,7 +17,7 @@ export default function PrivateRoute({
                     <Component {...routeProps}/>
                 ) : (
                     <Redirect to={{
-                        pathname: `${process.env.PUBLIC_URL}/login`,
+                        pathname: `/login`,
                         state: { from: routeProps.location }
                     }} />
                 )
