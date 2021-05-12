@@ -23,16 +23,17 @@ export default function AppRouter() {
         dispatch( startChecking() );
     }, [dispatch])
 
+    console.log(process.env.PUBLIC_URL);
     if ( checking ) {
         return ( <h3>Checking...</h3> )
     }
     return (
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
             <div>
                 <Switch>
                     <PublicRoute exact path={`${process.env.PUBLIC_URL}/login`} component={LoginScreen} isAuthenticated={authenticated} />
                     <PrivateRoute exact path={`${process.env.PUBLIC_URL}/`} component={CalendarScreen} isAuthenticated={authenticated} />
-                    <Redirect to="/"/>
+                    <Redirect to={`${process.env.PUBLIC_URL}/`}/>
                 </Switch>
             </div>
         </Router>

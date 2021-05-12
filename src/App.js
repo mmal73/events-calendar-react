@@ -6,7 +6,6 @@ import './App.css';
 import { store } from './store';
 
 export default function App() {
-    console.log(process.env.PUBLIC_URL);
     return (
         <Provider store={ store }>
             <AppRouter/>
