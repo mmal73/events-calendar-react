@@ -26,6 +26,8 @@ export default function AppRouter() {
     if ( checking ) {
         return ( <h3>Checking...</h3> )
     }
+    console.log(process.env);
+    console.log(process.env.PUBLIC_URL);
     return (
         <Router basename="/events-calendar-react">
             <div>
