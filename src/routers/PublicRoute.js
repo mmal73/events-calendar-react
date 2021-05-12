@@ -15,7 +15,7 @@ export default function PublicRoute({
             component={( routeProps ) =>
                 isAuthenticated ? (
                     <Redirect to={{
-                        pathname: "/",
+                        pathname: `${process.env.PUBLIC_URL}/`,
                         state: { from: routeProps.location }
                     }} />
                 ) : (
