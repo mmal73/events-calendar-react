@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FabAddNew.css';
 
 export default function FabAddNew({ className, handleClick, text}) {
@@ -10,4 +11,10 @@ export default function FabAddNew({ className, handleClick, text}) {
             {text}
         </button>
     )
+}
+
+FabAddNew.propTypes = {
+    text: PropTypes.element.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
 }
