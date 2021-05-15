@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in <FabAddNew/> component should show text from props 1`] = `
+<button
+  className="btn btn-primary fab-add"
+  onClick={[Function]}
+>
+  <i
+    className="fas fa-plus"
+  />
+</button>
+`;

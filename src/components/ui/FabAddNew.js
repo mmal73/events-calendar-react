@@ -16,5 +16,5 @@ export default function FabAddNew({ className, handleClick, text}) {
 FabAddNew.propTypes = {
     text: PropTypes.element.isRequired,
     handleClick: PropTypes.func.isRequired,
-    className: PropTypes.string,
+    className: PropTypes.string.isRequired,
 }
