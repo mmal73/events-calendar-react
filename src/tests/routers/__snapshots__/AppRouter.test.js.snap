@@ -39,7 +39,7 @@ exports[`Tests in AppRouter should show login screen 1`] = `
                 onChange={[Function]}
                 placeholder="Correo"
                 type="text"
-                value="luisito@mail.com"
+                value=""
               />
             </div>
             <div
@@ -52,7 +52,7 @@ exports[`Tests in AppRouter should show login screen 1`] = `
                 onChange={[Function]}
                 placeholder="Contraseña"
                 type="password"
-                value="12345678"
+                value=""
               />
             </div>
             <div
@@ -88,7 +88,7 @@ exports[`Tests in AppRouter should show login screen 1`] = `
                 onChange={[Function]}
                 placeholder="Nombre"
                 type="text"
-                value="luisito new"
+                value=""
               />
             </div>
             <div
@@ -101,7 +101,7 @@ exports[`Tests in AppRouter should show login screen 1`] = `
                 onChange={[Function]}
                 placeholder="Correo"
                 type="email"
-                value="luisitonew@mail.com"
+                value=""
               />
             </div>
             <div

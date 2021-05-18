@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in Login Screen should display correctly 1`] = `
+<div
+  className="login-container"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="row forms-container"
+    >
+      <div
+        className="col-md-6 login-form-1 mt-2 p-4"
+      >
+        <h3
+          className="text-white text-center"
+        >
+          Ingreso
+        </h3>
+        <form
+          className="form-container"
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="lEmail"
+              onChange={[Function]}
+              placeholder="Correo"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="lPassword"
+              onChange={[Function]}
+              placeholder="Contraseña"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group d-flex justify-content-center"
+          >
+            <input
+              autoComplete="off"
+              className="btn-submit"
+              type="submit"
+              value="Login"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        className="col-md-6 login-form-2 mt-2 p-4"
+      >
+        <h3
+          className="text-white text-center"
+        >
+          Registro
+        </h3>
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="rName"
+              onChange={[Function]}
+              placeholder="Nombre"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="rEmail"
+              onChange={[Function]}
+              placeholder="Correo"
+              type="email"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="rPassword1"
+              onChange={[Function]}
+              placeholder="Contraseña"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <input
+              autoComplete="off"
+              className="form-control input-form"
+              name="rPassword2"
+              onChange={[Function]}
+              placeholder="Repita la contraseña"
+              type="password"
+              value=""
+            />
+          </div>
+          <div
+            className="form-group d-flex justify-content-center"
+          >
+            <input
+              autoComplete="off"
+              className="btn-submit"
+              type="submit"
+              value="Crear cuenta"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

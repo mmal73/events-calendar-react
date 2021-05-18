@@ -11,14 +11,14 @@ export default function LoginScreen() {
     const dispatch = useDispatch();
 
     const [ formLoginValues, handleLoginInputChange ] = useForm({
-        lEmail: 'luisito@mail.com',
-        lPassword: '12345678'
+        lEmail: '',
+        lPassword: ''
     });
     const { lEmail, lPassword } = formLoginValues;
     
     const [ formRegisterValues, handleRegisterInputChange ] = useForm({
-        rName: 'luisito new',
-        rEmail: 'luisitonew@mail.com',
+        rName: '',
+        rEmail: '',
         rPassword1: '',
         rPassword2: ''
     });
