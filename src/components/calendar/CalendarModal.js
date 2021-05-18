@@ -116,6 +116,7 @@ export default function CalendarModal() {
             contentLabel="Example Modal"
             overlayClassName="modal-fondo"
             closeTimeoutMS={200}
+            ariaHideApp={ process.env.NODE_ENV !==  'test' }
         >
             <h1>{ eventActive ? 'Editar Evento' : 'Nuevo Evento'}</h1>
             <form

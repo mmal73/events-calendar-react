@@ -4,3 +4,5 @@ import {createSerializer} from 'enzyme-to-json';
 
 expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 configure({ adapter: new Adapter() });
+
+HTMLCanvasElement.prototype.getContext = () => {}
